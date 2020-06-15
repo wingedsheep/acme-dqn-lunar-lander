@@ -8,6 +8,10 @@ from acme.wrappers import gym_wrapper
 from agents.dqn_agent import DQNAgent
 from networks.models import Models
 
+from tensorflow.python.client import device_lib
+
+print(device_lib.list_local_devices())
+
 
 def render(env):
     return env.environment.render(mode='rgb_array')
