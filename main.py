@@ -21,7 +21,7 @@ model = Models.sequential_model(
     input_shape=environment_spec.observations.shape,
     num_outputs=environment_spec.actions.num_values,
     hidden_layers=3,
-    layer_size=60
+    layer_size=300
 )
 
 agent = DQNAgent(

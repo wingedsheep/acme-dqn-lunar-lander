@@ -255,5 +255,5 @@ dmypy.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm+all,osx
 
-environment_loop/*
-network_backup/*
+environment_loop/**
+network_backups/**

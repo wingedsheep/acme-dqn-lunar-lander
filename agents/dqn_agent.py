@@ -31,9 +31,12 @@ class DQNAgent(agent.Agent):
             discount: float = 0.99,
     ):
         self.network = network
-        self.network.compile(loss="categorical_crossentropy", optimizer='adam', learning_rate=learning_rate)
+        optimizer = tf.keras.optimizers.Adam(
+            learning_rate=learning_rate
+        )
+        self.network.compile(loss="categorical_crossentropy", optimizer=optimizer)
 
-        name = "network_backup"
+        name = "network_backups/initial"
         self.network.save(name)  # saves compiled state
         self.target_network = keras.models.load_model(name)
 

@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Tuple
 
 import numpy as np
@@ -32,11 +33,11 @@ class DQNLearner(core.Learner, KerasSaveable):
         self.__steps = 0
 
     def step(self):
-        if self.__steps % 50 == 0:
+        if self.__steps != 0 and self.__steps % 10 == 0:
             self.learn_on_mini_batch()
 
-        if self.__steps % 500 == 0:
-            name = "network_backup"
+        if self.__steps != 0 and self.__steps % 1000 == 0:
+            name = "network_backups/backup_" + str(self.__steps) + "_" + datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
             self.network.save(name)  # saves compiled state
             self.target_network = keras.models.load_model(name)
 
